@@ -11,8 +11,6 @@ import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import siImage from "../../assets/dashboard-sep.png";
-import siLogo from "../../assets/si-logo.png";
 import { LightTooltip } from "../ToolTips";
 
 const ExpandMore = styled((props) => {
@@ -26,7 +24,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function SICard() {
+export default function SICard2() {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -36,7 +34,7 @@ export default function SICard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={<Avatar alt="si-logo" src={siLogo}></Avatar>}
+        avatar={<Avatar alt="si-logo" src="/assets/si-logo.png"></Avatar>}
         action={
           <Typography
             title="Visit S&I Webpage"
@@ -51,13 +49,13 @@ export default function SICard() {
           </Typography>
         }
         title={"S&I Systems Pte Ltd"}
-        subheader="Product Developer Intern"
+        subheader="Software Developer"
       />
-      <CardMedia component="img" height="250" image={siImage} alt="si-dash" />
+      <CardMedia component="img" height="250" /*image={}*/ alt="SI Fix Term" />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          6 Months Advanced Technology Attachment Programme from May 2022 to Oct
-          2022
+          2 Months Fixed Term Contract at S&I Systems Pte Ltd as a Software
+          Developer from Oct 2022 to Dec 2022
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -77,31 +75,11 @@ export default function SICard() {
           <Typography paragraph>
             <b>Description:</b>
           </Typography>
-          <Typography paragraph>
-            Built a responsive dashboard to visualize real-time data from a
-            time-series database with React.js, Express.js, InfluxDB, Telegraf,
-            Node-Red and MQTT Mosquito.
-          </Typography>
-          <Typography paragraph>
-            Integrated relational database and time-series database for more
-            efficient data management.
-          </Typography>
-          <Typography paragraph>
-            Created data pipeline to automate data acquisition from edge
-            computers into database.
-          </Typography>
-          <Typography paragraph>
-            Built an end to end demo application to send and receive real time
-            data with InfluxDB, Telegraf, MQTT Mosquito, Node-Red, SpringBoot
-            and Java.
-          </Typography>
+          <Typography paragraph>-</Typography>
           <Typography paragraph>
             <b>Frameworks Used:</b>
           </Typography>
-          <Typography paragraph>
-            React, Express, MQTT Mosquito, InfluxDB, Giraffe Javascript Library,
-            Node-Red, Docker.
-          </Typography>
+          <Typography paragraph>-</Typography>
         </CardContent>
       </Collapse>
     </Card>

@@ -3,7 +3,7 @@
   "name": "Personal Portfolio",
   "icons": [
     {
-      "src": "nus.jpg",
+      "src": "assets/nus.jpg",
       "sizes": "192x192",
       "type": "image/jpg"
     }

@@ -1,10 +1,6 @@
 import { Avatar, Typography } from "@mui/material";
 import React, { Component } from "react";
-import nusImage from "../assets/nus.jpg";
-import meImage from "../assets/me.jpg";
 import { HtmlTooltip } from "../components/ToolTips";
-
-
 
 class About extends Component {
   render() {
@@ -33,7 +29,7 @@ class About extends Component {
               >
                 <Avatar
                   alt="me"
-                  src={meImage}
+                  src="/assets/me.jpg"
                   sx={{ width: 150, height: 150 }}
                 />
               </Typography>
@@ -54,7 +50,7 @@ class About extends Component {
                 component="a"
                 href="https://www.nus.edu.sg/"
               >
-                <img src={nusImage} width={150} alt="NUS" />
+                <img src="/assets/nus.jpg" width={150} alt="NUS" />
               </Typography>
             </HtmlTooltip>
           </div>
