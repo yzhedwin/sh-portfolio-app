@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import Home from './Home';
+import React, { Component } from "react";
+import Home from "./Home";
+
 class App extends Component {
   render() {
-    return (
-      <Home/>
-    );
+    return <Home />;
   }
 }
 
