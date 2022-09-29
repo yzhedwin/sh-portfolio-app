@@ -9,12 +9,14 @@ class Work extends Component {
   render() {
     return (
       <>
-        <div className="title">
-          Work Experiences
-        </div>
+        <div className="title">Work Experiences</div>
         <div className="work-cards">
-          <SICard />
-          <SICard2 />
+          <div className="card1">
+            <SICard />
+          </div>
+          <div className="card2">
+            <SICard2 />
+          </div>
         </div>
       </>
     );

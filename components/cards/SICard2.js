@@ -32,7 +32,7 @@ export default function SICard2() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345}}>
       <CardHeader
         avatar={<Avatar alt="si-logo" src="/assets/si-logo.png"></Avatar>}
         action={

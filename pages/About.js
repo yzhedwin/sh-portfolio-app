@@ -6,7 +6,6 @@ class About extends Component {
   render() {
     return (
       <>
-        <div className="welcome">Welcome to my Portfolio</div>
         <div className="title">About me</div>
         <div className="about-introcontainer">
           <div className="about-profile">
@@ -20,19 +19,21 @@ class About extends Component {
                 </>
               }
             >
-              <Typography
-                title="LinkedIn"
-                variant="h6"
-                noWrap
-                component="a"
-                href="https://www.linkedin.com/in/yzhedwin/"
-              >
-                <Avatar
-                  alt="me"
-                  src="/assets/me.jpg"
-                  sx={{ width: 150, height: 150 }}
-                />
-              </Typography>
+              <div>
+                <Typography
+                  title="LinkedIn"
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="https://www.linkedin.com/in/yzhedwin/"
+                >
+                  <Avatar
+                    alt="me"
+                    src="/assets/me.jpg"
+                    sx={{ width: 150, height: 150 }}
+                  />
+                </Typography>
+              </div>
             </HtmlTooltip>
           </div>
           <div className="about-school">
@@ -43,15 +44,17 @@ class About extends Component {
                 </>
               }
             >
-              <Typography
-                title="NUS"
-                variant="h6"
-                noWrap
-                component="a"
-                href="https://www.nus.edu.sg/"
-              >
-                <img src="/assets/nus.jpg" width={150} alt="NUS" />
-              </Typography>
+              <div>
+                <Typography
+                  title="NUS"
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="https://www.nus.edu.sg/"
+                >
+                  <img src="/assets/nus.jpg" width={150} alt="NUS" />
+                </Typography>
+              </div>
             </HtmlTooltip>
           </div>
         </div>
