@@ -19,7 +19,7 @@ class About extends Component {
               unmountOnExit
               in={this.props.aboutTitle}
               direction="right"
-              timeout={{ enter: 1000, exit: 0 }}
+              timeout={{ enter: 1000, exit: 200 }}
             >
               <h4>About me</h4>
             </Slide>
@@ -74,7 +74,7 @@ class About extends Component {
           <Zoom
             in={this.props.aboutProfile}
             style={{
-              transitionDelay: this.props.aboutProfile ? "500ms" : "0ms",
+              transitionDelay: this.props.aboutProfile ? "500ms" : "200ms",
             }}
             timeout={1000}
             mountOnEnter
@@ -107,7 +107,7 @@ class About extends Component {
         <Zoom
           in={this.props.aboutProfile}
           style={{
-            transitionDelay: this.props.aboutProfile ? "1000ms" : "0ms",
+            transitionDelay: this.props.aboutProfile ? "1000ms" : "200ms",
           }}
           timeout={1000}
           mountOnEnter

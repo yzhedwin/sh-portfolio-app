@@ -15,7 +15,7 @@ class Work extends Component {
           <Slide
             in={this.props.in}
             direction="right"
-            timeout={{ enter: 1000, exit: 0 }}
+            timeout={{ enter: 1000, exit: 200 }}
             mountOnEnter
             unmountOnExit
           >
