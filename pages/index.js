@@ -8,6 +8,7 @@ import Work from "./Work";
 /**
  * TODO:
  * Add Animations
+ * Dark/Light mode switch
  *
  *
  */

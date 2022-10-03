@@ -76,6 +76,7 @@ const Header = () => {
           style={{
             opacity: navRef.current,
             backgroundColor: "rgb(0, 1, 38)",
+            transition: "all 500ms ease-in-out"
           }}
           position="fixed"
         >

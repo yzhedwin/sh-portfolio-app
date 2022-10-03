@@ -31,7 +31,7 @@ class Work extends Component {
           <div className="work-cards">
             <Grow
               in={this.props.in}
-              timeout={{ enter: 1000, exit: 0 }}
+              timeout={{ enter: 1000, exit: 200 }}
               mountOnEnter
               unmountOnExit
             >
@@ -41,7 +41,7 @@ class Work extends Component {
             </Grow>
             <Grow
               in={this.props.in}
-              timeout={{ enter: 1500, exit: 0 }}
+              timeout={{ enter: 2000, exit: 200 }}
               mountOnEnter
               unmountOnExit
             >
