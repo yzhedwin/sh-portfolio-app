@@ -66,6 +66,7 @@ code {
 .work-exp {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 @media (min-width: 800px) {
@@ -73,6 +74,7 @@ code {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 100px;
   }
 }
 @media (max-width: 800px) {
