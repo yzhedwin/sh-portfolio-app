@@ -1,185 +1,210 @@
 /* eslint-disable no-unused-vars */
-import * as React from "react";
 import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-  Button,
-  Menu,
-  MenuItem,
-  IconButton,
+    Box,
+    AppBar,
+    Toolbar,
+    Typography,
+    Container,
+    Button,
+    Menu,
+    MenuItem,
+    IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
 
-const pages = ["Work Experience", "Projects", "About Me"];
+//TODO:
+const sections = [
+    { id: 1, title: "Work Experience" },
+    { id: 2, title: "Projects" },
+    { id: 3, title: "About Me" },
+];
 
-const Header = () => {
-  //MENU STUFF
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [navOpacity, setNavOpacity] = React.useState(1);
-  const [direction, setDirection] = React.useState("up");
-  const [scrollPos, setScrollPos] = React.useState(0);
-  let prevScrollY = 0;
+export default function Header() {
+    //MENU STUFF
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [navOpacity, setNavOpacity] = useState(1);
+    const [direction, setDirection] = useState("up");
+    const [scrollPos, setScrollPos] = useState(0);
+    let prevScrollY = 0;
 
-  const navRef = React.useRef();
-  let count = 0;
-  navRef.current = navOpacity;
+    const navRef = useRef();
+    let count = 0;
+    navRef.current = navOpacity;
 
-  const handleScroll = () => {
-    const pos = window.scrollY;
-    setScrollPos(pos);
-    //Nav Bar Animation
-    if (window.scrollY > prevScrollY) {
-      if (count < 10) {
-        count++;
-      }
-      navRef.current = navRef.current - count / 10;
-      setNavOpacity(navRef.current);
-      setDirection("down");
-    } else {
-      count = 0;
-      setDirection("up");
-    }
-    prevScrollY = window.scrollY;
-  };
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-  React.useEffect(() => {
-    if (direction === "up") {
-      setNavOpacity(1);
-    }
-  }, [direction]);
-
-  React.useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+        const pos = window.scrollY;
+        setScrollPos(pos);
+        //Nav Bar Animation
+        if (window.scrollY > prevScrollY) {
+            if (count < 10) {
+                count++;
+            }
+            navRef.current = navRef.current - count / 10;
+            setNavOpacity(navRef.current);
+            setDirection("down");
+        } else {
+            count = 0;
+            setDirection("up");
+        }
+        prevScrollY = window.scrollY;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
 
-  const renderEmpty = () => {
-    return <div></div>;
-  };
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+    useEffect(() => {
+        if (direction === "up") {
+            setNavOpacity(1);
+        }
+    }, [direction]);
 
-  const render = () => {
+    useEffect(() => {
+        document.addEventListener("scroll", handleScroll);
+        return () => {
+            document.removeEventListener("scroll", handleScroll);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const renderEmpty = () => {
+        return <div></div>;
+    };
+
     return (
-      <div>
-        <AppBar
-          style={{
-            opacity: navRef.current,
-            backgroundColor: "rgb(0, 1, 38)",
-            transition: "all 500ms ease-in-out"
-          }}
-          position="fixed"
-        >
-          <Container maxWidth="xl">
-            <Toolbar disableGutters sx={{display: "flex", flexDirection	: "row"}}>
-              <Typography
-                title="home"
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  flexGrow:1,
-                  ml: 2,
-                  mr: 2,
-                  display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
+        <div>
+            <AppBar
+                style={{
+                    opacity: navRef.current,
+                    backgroundColor: "rgb(0, 1, 38)",
+                    transition: "all 500ms ease-in-out",
                 }}
-              >
-                Edwin
-              </Typography>
-              <Typography
-                title="xs-home"
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: "flex", md: "none" },
-                  flexGrow: 1,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Edwin
-              </Typography>
-              <Box sx={{display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="xs-side-nav"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="xs-menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                  }}
-                >
-                  {pages.map((page) => (
-                    <MenuItem
-                      key={page}
-                      // onClick={() => {
-                      //   navigate("/" + page);
-                      // }}
+                position="fixed"
+            >
+                <Container maxWidth="xl">
+                    <Toolbar
+                        disableGutters
+                        sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                        }}
                     >
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-              <Box sx={{display: { xs: "none", md: "flex" } }}>
-                {pages.map((page) => (
-                  <Button
-                    key={page}
-                    //onClick={}
-                    sx={{ my: 2, color: "white", display: "block" }}
-                  >
-                    {page}
-                  </Button>
-                ))}
-              </Box>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </div>
+                        <Typography
+                            title="home"
+                            variant="h6"
+                            noWrap
+                            href="/"
+                            component="a"
+                            sx={{
+                                ml: 2,
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                fontFamily: "monospace",
+                                fontWeight: 700,
+                                letterSpacing: ".3rem",
+                                color: "inherit",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Edwin
+                        </Typography>
+
+                        <Typography
+                            title="xs-home"
+                            variant="h6"
+                            noWrap
+                            href="/"
+                            component="a"
+                            sx={{
+                                ml: 2,
+                                mr: 2,
+                                display: { xs: "flex", md: "none" },
+                                fontFamily: "monospace",
+                                fontWeight: 700,
+                                letterSpacing: ".3rem",
+                                color: "inherit",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Edwin
+                        </Typography>
+
+                        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="xs-side-nav"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="xs-menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: "bottom",
+                                    horizontal: "left",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: "block", md: "none" },
+                                }}
+                            >
+                                <MenuItem>
+                                    <Button onClick={() => signIn()}>
+                                        <Typography
+                                            textAlign="center"
+                                            sx={{
+                                                my: 2,
+                                                color: "white",
+                                                display: "block",
+                                            }}
+                                        >
+                                            Login
+                                        </Typography>
+                                    </Button>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                            {sections.map((section) => {
+                                return (
+                                    <Button
+                                        key={section.id}
+                                        sx={{
+                                            my: 2,
+                                            color: "white",
+                                            display: "block",
+                                        }}
+                                    >
+                                        {section.title}
+                                    </Button>
+                                );
+                            })}
+                            <Button
+                                onClick={() => signIn()}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                Login
+                            </Button>
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </div>
     );
-  };
-  //can be refractored to include more pages
-  return render();
-};
-export default Header;
+}
