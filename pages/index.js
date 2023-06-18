@@ -2,9 +2,9 @@ import { Slide, Zoom } from "@mui/material";
 import React, { Component, StrictMode } from "react";
 import { Waypoint } from "react-waypoint";
 import Header from "../components/Header";
-import About from "./about";
-import Project from "./project-details";
-import Work from "./work-exp";
+import About from "../components/about";
+import Project from "../components/project-details";
+import Work from "../components/work-exp";
 import Layout from "../components/layout";
 
 /**

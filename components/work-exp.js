@@ -1,8 +1,8 @@
 import { Grow, Slide } from "@mui/material";
 import React, { Component } from "react";
 import { Waypoint } from "react-waypoint";
-import SICard from "../components/cards/SICard";
-import SICard2 from "../components/cards/SICard2";
+import SICard from "./cards/SICard";
+import SICard2 from "./cards/SICard2";
 /**
  * Full Time internship
  * Part Time Job

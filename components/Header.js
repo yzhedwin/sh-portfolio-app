@@ -13,7 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 //TODO:
 const sections = [
@@ -21,6 +21,7 @@ const sections = [
     { id: 2, title: "Projects" },
     { id: 3, title: "About Me" },
 ];
+const authPage = [{ id: 1, title: "Asset" }];
 
 export default function Header() {
     //MENU STUFF
@@ -28,6 +29,7 @@ export default function Header() {
     const [navOpacity, setNavOpacity] = useState(1);
     const [direction, setDirection] = useState("up");
     const [scrollPos, setScrollPos] = useState(0);
+    const { data: session } = useSession();
     let prevScrollY = 0;
 
     const navRef = useRef();
@@ -71,6 +73,55 @@ export default function Header() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    const renderLogoutBtn = () => {
+        return (
+            <Button
+                onClick={() => signOut()}
+                sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                }}
+            >
+                Logout
+            </Button>
+        );
+    };
+    const renderLoginBtn = () => {
+        return (
+            <Button
+                onClick={() => signIn()}
+                sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                }}
+            >
+                Login
+            </Button>
+        );
+    };
+    const renderHeaderButtons = () => {
+        return (
+            <>
+                {authPage.map((page) => {
+                    return (
+                        <Button
+                            href={"/" + page.title.toLowerCase()}
+                            sx={{
+                                my: 2,
+                                color: "white",
+                                display: "block",
+                            }}
+                        >
+                            {page.title}
+                        </Button>
+                    );
+                })}
+                {renderLogoutBtn()}
+            </>
+        );
+    };
 
     const renderEmpty = () => {
         return <div></div>;
@@ -164,20 +215,22 @@ export default function Header() {
                                     display: { xs: "block", md: "none" },
                                 }}
                             >
-                                <MenuItem>
-                                    <Button onClick={() => signIn()}>
-                                        <Typography
-                                            textAlign="center"
-                                            sx={{
-                                                my: 2,
-                                                color: "white",
-                                                display: "block",
-                                            }}
-                                        >
-                                            Login
-                                        </Typography>
-                                    </Button>
-                                </MenuItem>
+                                {sections.map((section) => {
+                                    return (
+                                        <MenuItem key={section.id}>
+                                            {section.title}
+                                        </MenuItem>
+                                    );
+                                })}
+                                {session ? (
+                                    <MenuItem onClick={() => signOut()}>
+                                        Logout
+                                    </MenuItem>
+                                ) : (
+                                    <MenuItem onClick={() => signIn()}>
+                                        Login
+                                    </MenuItem>
+                                )}
                             </Menu>
                         </Box>
                         <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -195,12 +248,7 @@ export default function Header() {
                                     </Button>
                                 );
                             })}
-                            <Button
-                                onClick={() => signIn()}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
-                                Login
-                            </Button>
+                            {session ? renderHeaderButtons() : renderLoginBtn()}
                         </Box>
                     </Toolbar>
                 </Container>

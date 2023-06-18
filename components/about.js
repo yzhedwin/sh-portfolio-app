@@ -1,7 +1,7 @@
 import { Avatar, Grow, Slide, Typography, Zoom } from "@mui/material";
 import React, { Component } from "react";
 import { Waypoint } from "react-waypoint";
-import { HtmlTooltip } from "../components/ToolTips";
+import { HtmlTooltip } from "./ToolTips";
 
 class About extends Component {
   render() {
