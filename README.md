@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# 🧑‍💻 next-portolio-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern **personal portfolio** built with [Next.js](https://nextjs.org/) to showcase projects, work experience, and skills. This app is designed as a **Progressive Web App (PWA)** — installable, fast, and mobile-friendly.
 
-## Available Scripts
+![screenshot](public/preview.png) <!-- Optional: Replace with a real screenshot -->
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ⚡ **Next.js 14** — fast, SEO-friendly, and optimized for modern web
+- 🎯 **Project Showcase** — fetch and display pinned GitHub repositories
+- 🧱 **Work Experience** — timeline-based experience section
+- 📱 **PWA Support** — installable on mobile and desktop
+- 🌓 **Dark Mode** (optional)
+- 🧩 **Tailwind CSS** — utility-first styling for modern layout
+- ✨ **Framer Motion** — smooth animations on scroll and interaction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📸 Preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Deployed Link: [https://next-portolio-app.vercel.app](https://next-portolio-app.vercel.app)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [GitHub GraphQL API](https://docs.github.com/en/graphql)
+- [PWA Support](https://nextjs.org/docs/advanced-features/progressive-web-apps)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧑‍🔧 How It Works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **GitHub Pinned Repos** are fetched via the GitHub GraphQL API using a secure API route.
+- Data is animated and displayed in a **zigzag layout** with scroll-in effects.
+- Portfolio sections include:
+  - Introduction
+  - Projects
+  - Work Experience
+  - Contact
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📦 Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1. Clone the repo
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/yzhedwin/next-portolio-app.git
+cd next-portolio-app
