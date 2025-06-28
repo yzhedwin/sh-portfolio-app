@@ -1,6 +1,6 @@
 body {
-  background-color: rgb(0, 2, 53);
-  color: white;
+  background-color: rgb(155, 255, 150);
+  color: black;
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
@@ -156,3 +156,4 @@ code {
     margin-bottom: 50px;
   }
 }
+@import "tailwindcss";
