@@ -3,9 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
-
-const GITHUB_USERNAME = 'yzhedwin'; // ← change this
 
 export default function Projects() {
   const [repos, setRepos] = useState([]);
@@ -15,10 +12,10 @@ export default function Projects() {
         res.json())
       .then(setRepos);
 
-    fetch('/api/other-repo')
-    .then((res) => res.json()
-    )
-    .then(console.log);
+    // fetch('/api/other-repo')
+    // .then((res) => res.json()
+    // )
+    // .then(console.log);
   }, []);
 
  return (
