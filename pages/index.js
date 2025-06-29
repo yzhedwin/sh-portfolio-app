@@ -36,7 +36,7 @@ class Home extends Component {
     return (
       <>
         <Header />
-        <div className="home-component">
+        <div className="home-component" >
           <div className="welcome">
             <Waypoint
               onEnter={() => {
