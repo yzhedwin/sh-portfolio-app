@@ -75,7 +75,7 @@ const Header = () => {
         <AppBar
           style={{
             opacity: navRef.current,
-            backgroundColor: "rgb(0, 1, 38)",
+            backgroundColor: "rgb(29, 96, 72)",
             transition: "all 500ms ease-in-out"
           }}
           position="fixed"
