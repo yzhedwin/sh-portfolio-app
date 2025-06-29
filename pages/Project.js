@@ -30,7 +30,7 @@ export default function Projects() {
     }, []);
     const handleConfirm = (url) => {
         console.log("Confirmed URL:", url);
-        window.location.href = url
+        alert("Opening repository in a new tab...");
     }
 
     return (
