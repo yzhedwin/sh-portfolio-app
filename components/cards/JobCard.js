@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { LightTooltip } from "../ToolTips";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -33,10 +34,18 @@ export default function JobCard(props) {
   };
 
   return (
-    <Card sx={{
-      display: "flex", flexDirection: "column", padding: 1, textAlign: "left", boxShadow: 3,
-      height: { xs: "40vh", sm: "45vh", md: "40vh" }
-    }}>
+    <Card
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: 1,
+        textAlign: "left",
+        boxShadow: 3,
+        overflow: "hidden",
+        height: { sx: expanded ? "100%" : "35vh", sm: expanded ? "100%" : "50vh", md: expanded ? "100%" : "40vh" },
+        width: "100%",
+      }}
+    >
       <CardHeader
         avatar={<Avatar alt="logo" src={companyLogo} ></Avatar>}
         action={
@@ -72,18 +81,24 @@ export default function JobCard(props) {
           aria-label="show more"
         >
           <LightTooltip title="See more">
-            <ExpandMoreIcon />
+            <ExpandMoreIcon sx={{ cursor: "grab" }} />
           </LightTooltip>
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>
-            <b>Description:</b>
-          </Typography>
-          <>
+        <motion.div
+          key="desc"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 10 }}
+          style={{ overflow: "hidden" }} // crucial to prevent content overflow during animation
+        >
+          <CardContent>
+            <Typography paragraph>
+              <b>Description:</b>
+            </Typography>
             {Array.isArray(jobDescriptionList) && jobDescriptionList.length > 0 ? (
-
               jobDescriptionList.map((desc, index) => (
                 <Typography key={index} paragraph>
                   {desc}
@@ -94,12 +109,13 @@ export default function JobCard(props) {
                 No specific job experiences listed.
               </Typography>
             )}
-          </>
-          <Typography paragraph>
-            <b>Frameworks Used:</b>
-          </Typography>
-          <Typography paragraph>{frameworkList ? frameworkList : "N/A"}</Typography>
-        </CardContent>
+
+            <Typography paragraph>
+              <b>Frameworks Used:</b>
+            </Typography>
+            <Typography paragraph>{frameworkList ?? "N/A"}</Typography>
+          </CardContent>
+        </motion.div>
       </Collapse>
     </Card>
   );
