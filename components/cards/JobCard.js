@@ -33,7 +33,7 @@ export default function JobCard(props) {
   };
 
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", margin: "auto", padding: 2 }}>
+    <Card sx={{ display: "flex", flexDirection: "column", margin: "auto", padding: 2, textAlign: "left" }}>
       <CardHeader
         avatar={<Avatar alt="logo" src={companyLogo}></Avatar>}
         action={
