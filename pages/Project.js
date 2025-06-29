@@ -29,12 +29,12 @@ export default function Projects() {
         // .then(console.log);
     }, []);
     const handleConfirm = (url) => {
+        console.log("Confirmed URL:", url);
         alert("Opening repository in a new tab...");
-        window.location.href = url
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 p-6 user-select-none">
+        <div className="min-h-screen bg-gray-100 p-6">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
                 🚀 Project Showcase
             </h1>

@@ -11,15 +11,7 @@ const card3DVariants = {
 export default function Internship({ isInView }) {
     return (
         <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-                variants={card3DVariants}
-                initial="initial"
-                animate={isInView ? 'animate' : 'initial'}
-                transition={{ duration: 1 }}
-                whileHover={{ rotateX: 5, rotateY: -5, scale: 1.03 }}
-                className="card1 bg-red p-6 rounded-2xl shadow-2xl transform-style-preserve-3d m-auto"
-                style={{ transformStyle: 'preserve-3d' }}
-            >
+            <div className="bg-red p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
                 <JobCard
                     imageURL={SI_INTERNSHIP_IMAGE_URL}
                     companyLogo={SI_INTERNSHIP_COMPANY_LOGO}
@@ -33,17 +25,9 @@ export default function Internship({ isInView }) {
                     ]}
                     frameworkList={SI_INTERNSHIP_FRAMEWORKS}
                 />
-            </motion.div>
+            </div>
 
-            <motion.div
-                variants={card3DVariants}
-                initial="initial"
-                animate={isInView ? 'animate' : 'initial'}
-                transition={{ duration: 1 }}
-                whileHover={{ rotateX: 5, rotateY: -5, scale: 1.03 }}
-                className="card1 bg-red p-4 rounded-2xl shadow-2xl transform-style-preserve-3d m-auto"
-                style={{ transformStyle: 'preserve-3d' }}
-            >
+            <div className="bg-blue p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
                 <JobCard
                     imageURL={DSTA_INTERNSHIP_IMAGE_URL}
                     companyLogo={DSTA_INTERNSHIP_COMPANY_LOGO}
@@ -57,7 +41,7 @@ export default function Internship({ isInView }) {
                     ]}
                     frameworkList={DSTA_INTERNSHIP_FRAMEWORKS}
                 />
-            </motion.div>
+            </div>
         </div>
     );
 }

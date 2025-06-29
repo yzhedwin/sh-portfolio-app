@@ -52,7 +52,7 @@ class Home extends Component {
                 <Slide
                   in={this.state.welcome}
                   direction="right"
-                  timeout={{ enter: 1000, exit: 0 }}
+                  timeout={{ enter: 1500, exit: 0 }}
                   mountOnEnter
                   unmountOnExit
                 >
