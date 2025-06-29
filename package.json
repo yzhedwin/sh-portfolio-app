@@ -24,12 +24,12 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-    "node": "v24.0.0",
-    "npm": "11.3.0"
+    "node": "v24.3.0",
+    "npm": "11.4.2"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-on-pages --experimental-minify",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch"
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "eslint": "^8.24.0",
