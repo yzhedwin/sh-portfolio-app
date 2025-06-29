@@ -24,7 +24,6 @@ export default function Projects() {
     // .then(console.log);
   }, []);
 
-
     return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -32,7 +31,7 @@ export default function Projects() {
       </h1>
 
       <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-10">
-        {repos.map((repo, index) => (
+        {Array.isArray(repos) && repos.map((repo, index) => (
           <motion.div
             key={repo.id}
             initial={{ opacity: 0, y: 40 }}

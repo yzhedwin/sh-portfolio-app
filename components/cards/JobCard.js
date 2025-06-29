@@ -24,38 +24,38 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function SICard2() {
+export default function JobCard(props) {
   const [expanded, setExpanded] = React.useState(false);
+  const { companyLogo, imageURL, linkToCompany, companyName, jobTitle, jobType, jobSummary, jobDescriptionList, frameworkList } = props;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card sx={{ maxWidth: 345}}>
+    <Card sx={{ display: "flex", flexDirection: "column", maxWidth: 450 }}>
       <CardHeader
-        avatar={<Avatar alt="si-logo" src="/assets/si-logo.png"></Avatar>}
+        avatar={<Avatar alt="si-logo" src={companyLogo}></Avatar>}
         action={
           <Typography
-            title="Visit S&I Webpage"
+            title={`Visit ${companyName} Webpage`}
             variant="h6"
             noWrap
             component="a"
-            href="https://si-asia.com/"
+            href={linkToCompany}
           >
             <IconButton aria-label="settings">
               <MoreVertIcon />
             </IconButton>
           </Typography>
         }
-        title={"S&I Systems Pte Ltd"}
-        subheader="Software Developer"
+        title={companyName}
+        subheader={jobTitle}
       />
-      <CardMedia component="img" height="250" /*image={}*/ alt="SI Fix Term" />
+      <CardMedia component="img" image={imageURL} alt={jobType} sx={{ objectFit: "cover", maxHeight: 120 }} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          2 Months Fixed Term Contract at S&I Systems Pte Ltd as a Software
-          Developer from Oct 2022 to Dec 2022
+          {jobSummary ? jobSummary : "No summary available."}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -75,11 +75,24 @@ export default function SICard2() {
           <Typography paragraph>
             <b>Description:</b>
           </Typography>
-          <Typography paragraph>-</Typography>
+          <>
+            {Array.isArray(jobDescriptionList) && jobDescriptionList.length > 0 ? (
+
+              jobDescriptionList.map((desc, index) => (
+                <Typography key={index} paragraph>
+                  {desc}
+                </Typography>
+              ))
+            ) : (
+              <Typography paragraph>
+                No specific job experiences listed.
+              </Typography>
+            )}
+          </>
           <Typography paragraph>
             <b>Frameworks Used:</b>
           </Typography>
-          <Typography paragraph>-</Typography>
+          <Typography paragraph>{frameworkList ? frameworkList : "N/A"}</Typography>
         </CardContent>
       </Collapse>
     </Card>

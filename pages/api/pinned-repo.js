@@ -32,6 +32,9 @@ export default async function handler(req, res) {
   });
 
   const json = await response.json();
-  const repos = json.data.user.pinnedItems.nodes;
+  if (response.status !== 200) {
+    return res.status(response.status).json({ error: json.errors || 'Failed to fetch data' });
+  }
+  const repos = json.data?.user.pinnedItems.nodes;
   res.status(200).json(repos);
 }
