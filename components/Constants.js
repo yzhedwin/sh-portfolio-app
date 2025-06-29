@@ -31,3 +31,37 @@ export const DSTA_INTERNSHIP_JOB_TITLE = "Software Engineer Intern";
 export const DSTA_INTERNSHIP_JOB_TYPE = "Full Time Internship";
 export const DSTA_INTERNSHIP_IMAGE_URL = "/assets/job/placeholder.gif";
 export const DSTA_INTERNSHIP_COMPANY_LOGO = "/assets/job/dsta-logo.png";
+
+
+export const DUMMY_REPOS = [
+    {
+        id: "R_kgDO1",
+        name: "sh-datrun-app",
+        description: "Analytics dashboard using React + D3.js",
+        html_url: "https://github.com/yzhedwin/sh-datrun-app",
+        stargazerCount: 12,
+        forkCount: 3,
+        updatedAt: "2025-25-06T18:10:00Z",
+        primaryLanguage: { name: "TypeScript" },
+    },
+    {
+        id: "R_kgDO2",
+        name: "sh-peercode-iac",
+        description: "Infrastructure as Code with Terraform and K3s",
+        html_url: "https://github.com/yzhedwin/sh-peercode-iac",
+        stargazerCount: 30,
+        forkCount: 5,
+        updatedAt: "2025-20-06T09:00:00Z",
+        primaryLanguage: { name: "HCL" },
+    },
+    {
+        id: "R_kgDO3",
+        name: "PeerCode",
+        description: "A full-stack app for collaborative coding",
+        html_url: "https://github.com/yzhedwin/PeerCode",
+        stargazerCount: 25,
+        forkCount: 8,
+        updatedAt: "2025-22-06T14:30:00Z",
+        primaryLanguage: { name: "Python" },
+    },
+];
