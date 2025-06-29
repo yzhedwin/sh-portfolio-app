@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { DUMMY_REPOS } from '../components/Constants';
+import ConfirmButton from '../components/buttons/ConfirmButton';
 // Optionally map repo names to GIFs
 const repoGifs = {
   "sh-datrun-app": "/assets/gif/project1.gif",
@@ -27,6 +28,10 @@ export default function Projects() {
     // )
     // .then(console.log);
   }, []);
+  const handleConfirm = (url) => {
+    alert("Opening repository in a new tab...");
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -69,16 +74,7 @@ export default function Projects() {
                 Language: {repo.primaryLanguage?.name || 'N/A'}
               </div>
               <div className="px-3 mt-auto text-xs text-gray-400">Last Updated: {new Date(repo.updatedAt).toLocaleDateString()}</div>
-
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 mt-5 px-4 py-2 bg-gray-800 text-white rounded-xl shadow hover:bg-green-500 hover:scale-105 transform transition-all duration-200"
-              >
-                View on GitHub →
-              </a>
-
+              <ConfirmButton url={repo.html_url} onConfirm={() => handleConfirm(repo.html_url)} />
             </div>
           </motion.div>
         ))}
