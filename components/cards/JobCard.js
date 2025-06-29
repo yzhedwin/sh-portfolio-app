@@ -33,9 +33,12 @@ export default function JobCard(props) {
   };
 
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", margin: "auto", padding: 2, textAlign: "left" }}>
+    <Card sx={{
+      display: "flex", flexDirection: "column", padding: 1, textAlign: "left", boxShadow: 3,
+      height: { xs: "40vh", sm: "45vh", md: "40vh" }
+    }}>
       <CardHeader
-        avatar={<Avatar alt="logo" src={companyLogo}></Avatar>}
+        avatar={<Avatar alt="logo" src={companyLogo} ></Avatar>}
         action={
           <Typography
             title={`Visit ${companyName} Webpage`}
@@ -43,6 +46,7 @@ export default function JobCard(props) {
             noWrap
             component="a"
             href={linkToCompany}
+
           >
             <IconButton aria-label="settings">
               <MoreVertIcon />
@@ -51,8 +55,10 @@ export default function JobCard(props) {
         }
         title={companyName}
         subheader={jobTitle}
+        sx={{ height: "13vh", textAlign: "left", fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
       />
-      <CardMedia component="img" image={imageURL} alt={jobType} sx={{ objectFit: "fill", maxHeight: 150 }} />
+      <CardMedia component="img" image={imageURL} alt={jobType}
+        sx={{ height: { sm: "35vh", md: "15vh" }, objectFit: "scale-down" }} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {jobSummary ? jobSummary : "No summary available."}
