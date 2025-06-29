@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { DUMMY_REPOS } from '../components/Constants';
 // Optionally map repo names to GIFs
 const repoGifs = {
   "sh-datrun-app": "/assets/gif/project1.gif",
@@ -11,12 +12,15 @@ const repoGifs = {
   "next-portolio-app": "/assets/gif/project4.gif",
 };
 export default function Projects() {
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState(DUMMY_REPOS);
   useEffect(() => {
     fetch('/api/pinned-repo')
-      .then((res) => 
+      .then((res) =>
         res.json())
-      .then(setRepos);
+      .then(setRepos)
+      .catch((error) => {
+        console.error("Error fetching repos:", error);
+      });
 
     // fetch('/api/other-repo')
     // .then((res) => res.json()
@@ -24,7 +28,7 @@ export default function Projects() {
     // .then(console.log);
   }, []);
 
-    return (
+  return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
         🚀 Project Showcase
@@ -50,29 +54,31 @@ export default function Projects() {
             )}
 
             {/* Card Body */}
-            <div className="p-5 flex flex-col height-full">
+            <div className="flex flex-col height-full">
               {/* Repo Name and Description */}
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              <h2 className="px-3 py-2 text-xl font-semibold text-gray-800 mb-2">
                 {repo.name}
               </h2>
-              <p className="text-gray-600 text-sm mb-3 line-clamp-3 min-h-16">
+              <p className="px-3 text-gray-600 text-sm mb-3 line-clamp-3 min-h-16">
                 {repo.description || "No description available."}
               </p>
-              <div className="text-sm text-gray-500 mb-1">
+              <div className="px-3 text-sm text-gray-500 mb-1">
                 ⭐ {repo.stargazerCount} | 🍴 {repo.forkCount}
               </div>
-              <div className="text-xs text-gray-400 mb-3">
+              <div className="px-3 text-xs text-gray-400 mb-3">
                 Language: {repo.primaryLanguage?.name || 'N/A'}
               </div>
+              <div className="px-3 mt-auto text-xs text-gray-400">Last Updated: {new Date(repo.updatedAt).toLocaleDateString()}</div>
+
               <a
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-600 font-medium hover:underline"
+                className="inline-flex items-center justify-center gap-2 mt-5 px-4 py-2 bg-gray-800 text-white rounded-xl shadow hover:bg-green-500 hover:scale-105 transform transition-all duration-200"
               >
                 View on GitHub →
               </a>
-              <div className="mt-auto text-xs text-gray-400">Last Updated: {new Date(repo.updatedAt).toLocaleDateString()}</div>
+
             </div>
           </motion.div>
         ))}
