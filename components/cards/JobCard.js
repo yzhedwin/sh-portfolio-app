@@ -7,7 +7,6 @@ import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
-
 export default function JobCard(props) {
   const { companyLogo, imageURL, linkToCompany, companyName, jobTitle, jobType, jobSummary, jobDescriptionList, frameworkList } = props;
 
@@ -32,7 +31,6 @@ export default function JobCard(props) {
               noWrap
               component="a"
               href={linkToCompany}
-
             >
               <IconButton aria-label="settings">
                 <MoreVertIcon />
@@ -60,13 +58,12 @@ export default function JobCard(props) {
                 <Typography key={index} paragraph>
                   {desc}
                 </Typography>
-              ))
-            ) : (
+              )}
+
               <Typography paragraph>
-                No specific job experiences listed.
+                <b>Frameworks Used:</b>
               </Typography>
             )}
-
             <Typography paragraph>
               <b>Frameworks Used:</b>
             </Typography>
