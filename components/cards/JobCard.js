@@ -53,17 +53,6 @@ export default function JobCard(props) {
             <Typography paragraph>
               <b>Description:</b>
             </Typography>
-            {Array.isArray(jobDescriptionList) && jobDescriptionList.length > 0 ? (
-              jobDescriptionList.map((desc, index) => (
-                <Typography key={index} paragraph>
-                  {desc}
-                </Typography>
-              )}
-
-              <Typography paragraph>
-                <b>Frameworks Used:</b>
-              </Typography>
-            )}
             <Typography paragraph>
               <b>Frameworks Used:</b>
             </Typography>
