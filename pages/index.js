@@ -1,10 +1,9 @@
-import { Slide, Zoom } from "@mui/material";
-import React, { Component } from "react";
-import { Waypoint } from "react-waypoint";
+import { useRef } from "react";
 import Header from "../components/Header";
 import About from "./About";
 import Project from "./Project";
 import Work from "./Work";
+import { motion, useInView } from "framer-motion";
 /**
  * TODO:
  * Add Animations
@@ -12,80 +11,30 @@ import Work from "./Work";
  *
  *
  */
-class Home extends Component {
-  constructor(props) {
-    super(props);
+function Home() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3, once: false });
+  return (
+    <>
+      <Header />
+      <div className="flex flex-col justify-center min-h-[150vh] w-[100%] items-center overflow-x-hidden" >
+        <motion.div
+          ref={ref}
+          initial={{ x: 0, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="flex justify-center items-center w-full min-h-[100vh] welcome text-4xl font-bold text-center mb-12"
+        >
+          <h4>Welcome to my Portfolio</h4>
+        </motion.div>
 
-    this.state = {
-      welcome: false,
-      aboutTitle: false,
-      aboutProfile: false,
-      workPage: false,
-    };
-  }
-
-  _handleEnter(state) {
-    this.setState((prevState) => ({ ...prevState, [state]: true }));
-  }
-
-  _handleExit(state) {
-    this.setState((prevState) => ({ ...prevState, [state]: false }));
-  }
-
-  render() {
-    return (
-      <>
-        <Header />
-        <div className="home-component" >
-          <div className="welcome">
-            <Waypoint
-              onEnter={() => {
-                this._handleEnter("welcome");
-              }}
-              onLeave={() => {
-                this._handleExit("welcome");
-              }}
-              topOffset={"10%"}
-              bottomOffset={"10%"}
-            >
-              <div>
-                <Slide
-                  in={this.state.welcome}
-                  direction="right"
-                  timeout={{ enter: 1500, exit: 0 }}
-                  mountOnEnter
-                  unmountOnExit
-                >
-                  <h4>Welcome to my Portfolio</h4>
-                </Slide>
-              </div>
-            </Waypoint>
-          </div>
-
-          <div className="about">
-            <About
-              aboutTitle={this.state.aboutTitle}
-              aboutProfile={this.state.aboutProfile}
-              _titleEnter={() => this._handleEnter("aboutTitle")}
-              _profileEnter={() => this._handleEnter("aboutProfile")}
-              _titleExit={() => this._handleExit("aboutTitle")}
-              _profileExit={() => this._handleExit("aboutProfile")}
-            />
-          </div>
-          <div className="work-exp">
-            <Work
-              in={this.state.workPage}
-              _enter={() => this._handleEnter("workPage")}
-              _exit={() => this._handleExit("workPage")}
-            />
-          </div>
-          <div className="projects">
-            <Project />
-          </div>
-        </div>
-      </>
-    );
-  }
+        <About />
+        <Work />
+        <Project />
+      </div >
+    </>
+  );
 }
+
 
 export default Home;

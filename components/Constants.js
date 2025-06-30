@@ -65,3 +65,36 @@ export const DUMMY_REPOS = [
         primaryLanguage: { name: "Python" },
     },
 ];
+
+export const INTERNSHIP_CARDS = [
+    {
+        id: 1,
+        imageURL: SI_INTERNSHIP_IMAGE_URL,
+        companyLogo: SI_INTERNSHIP_COMPANY_LOGO,
+        companyName: SI_INTERNSHIP_COMPANY,
+        jobTitle: SI_INTERNSHIP_JOB_TITLE,
+        jobType: SI_INTERNSHIP_JOB_TYPE,
+        jobSummary: SI_INTERNSHIP_SUMMARY,
+        linkToCompany: SI_INTERNSHIP_COMPANY_URL,
+        jobDescriptionList:
+            [
+                SI_INTERNSHIP_DESCRIPTION, SI_INTERNSHIP_DESCRIPTION_2, SI_INTERNSHIP_DESCRIPTION_3, SI_INTERNSHIP_DESCRIPTION_4
+            ],
+        frameworkList: SI_INTERNSHIP_FRAMEWORKS
+    },
+    {
+        id: 2,
+        imageURL: DSTA_INTERNSHIP_IMAGE_URL,
+        companyLogo: DSTA_INTERNSHIP_COMPANY_LOGO,
+        companyName: DSTA_INTERNSHIP_COMPANY,
+        jobTitle: DSTA_INTERNSHIP_JOB_TITLE,
+        jobType: DSTA_INTERNSHIP_JOB_TYPE,
+        jobSummary: SI_INTERNSHIP_SUMMARY,
+        linkToCompany: DSTA_INTERNSHIP_COMPANY_URL,
+        jobDescriptionList:
+            [
+                DSTA_INTERNSHIP_DESCRIPTION, DSTA_INTERNSHIP_DESCRIPTION_2, DSTA_INTERNSHIP_DESCRIPTION_3, DSTA_INTERNSHIP_DESCRIPTION_4
+            ],
+        frameworkList: DSTA_INTERNSHIP_FRAMEWORKS
+    }
+]
