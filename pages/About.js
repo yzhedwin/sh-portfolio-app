@@ -36,7 +36,6 @@ export default function About() {
           >
             <div>
               <Typography
-                title="LinkedIn"
                 variant="h6"
                 noWrap
                 component="a"
@@ -66,7 +65,6 @@ export default function About() {
             }
           >
             <Typography
-              title="NUS"
               variant="h6"
               noWrap
               component="a"
