@@ -1,8 +1,7 @@
-import { Avatar, Grow, Slide, Typography, Zoom } from "@mui/material";
-import React, { Component, useRef } from "react";
-import { Waypoint } from "react-waypoint";
+import { Avatar, Typography } from "@mui/material";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { HtmlTooltip } from "../components/ToolTips";
-import { useInView, motion } from "framer-motion";
 
 export default function About() {
   const ref = useRef(null);

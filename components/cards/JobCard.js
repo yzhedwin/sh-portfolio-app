@@ -11,7 +11,7 @@ export default function JobCard(props) {
   const { companyLogo, imageURL, linkToCompany, companyName, jobTitle, jobType, jobSummary, jobDescriptionList, frameworkList } = props;
 
   return (
-    <div className="bg-blue p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
+    <div className="h-full w-full bg-blue p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
       <Card
         sx={{
           overflow: "hidden",
@@ -19,7 +19,6 @@ export default function JobCard(props) {
           boxShadow: 3,
           textAlign: "left",
           padding: 1,
-          width: { sx: "100vw", md: "30vw", lg: "35vw" },
         }}
       >
         <CardHeader
@@ -42,7 +41,7 @@ export default function JobCard(props) {
           sx={{ height: "13vh", textAlign: "left", fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
         />
         <CardMedia component="img" image={imageURL} alt={jobType}
-          sx={{ height: { sm: "35vh", md: "15vh" }, objectFit: "scale-down" }} />
+          sx={{ height: { sm: "40%", md: "40%", lg: "40%" }, objectFit: "scale-down" }} />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {jobSummary ? jobSummary : "No summary available."}
@@ -53,6 +52,20 @@ export default function JobCard(props) {
             <Typography paragraph>
               <b>Description:</b>
             </Typography>
+            <>
+              {Array.isArray(jobDescriptionList) && jobDescriptionList.length > 0 ? (
+
+                jobDescriptionList.map((desc, index) => (
+                  <Typography key={index} paragraph>
+                    {desc}
+                  </Typography>
+                ))
+              ) : (
+                <Typography paragraph>
+                  No specific job experiences listed.
+                </Typography>
+              )}
+            </>
             <Typography paragraph>
               <b>Frameworks Used:</b>
             </Typography>

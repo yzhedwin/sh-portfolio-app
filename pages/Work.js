@@ -15,7 +15,7 @@ const Work = () => {
   return (
     <section ref={ref} className="py-20 px-4 perspective-1000">
       <motion.div
-        initial={{ x: 100, opacity: 0 }}
+        initial={{ x: 0, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
         className="text-4xl font-bold text-center mb-12"
@@ -23,8 +23,8 @@ const Work = () => {
         Work Experiences
       </motion.div>
       <motion.div
-        initial={{ x: 100, opacity: 0 }}
-        animate={isInView ? { x: 0, opacity: 1 } : {}}
+        initial={{ x: 0, y: 100, opacity: 0 }}
+        animate={isInView ? { x: 0, y:0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
         className="text-4xl font-bold text-center mb-12"
       >
@@ -36,7 +36,7 @@ const Work = () => {
 
 
       <motion.div
-        initial={{ x: 100, opacity: 0 }}
+        initial={{ x: 0, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
         className="text-4xl font-bold text-center mb-12 mt-20"

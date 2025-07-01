@@ -17,22 +17,28 @@ export default function Internship({ isInView }) {
                 <motion.div
                     key={card.id}
                     layoutId={card.id}
+                    initial={{ x: 0, y:-10, opacity: 0 }}
+                    animate={isInView ? { x: 0, y:0, opacity: 1 } : {}}
+                    transition={{ duration: 0.2 }}
+                    whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" }}
                     className="card bg-red p-6 rounded-2xl shadow-2xl transform-style-preserve-3d"
                     onClick={() => setCard(card)}
                 >
-                    <JobCard
-                        expanded={false}
-                        imageURL={card.imageURL}
-                        companyLogo={card.companyLogo}
-                        companyName={card.companyName}
-                        jobTitle={card.jobTitle}
-                        jobType={card.jobType}
-                        jobSummary={card.jobSummary}
-                        linkToCompany={card.linkToCompany}
-                        jobDescriptionList={card.jobDescriptionList}
-                        frameworkList={card.frameworkList}
-                        card={card}
-                    />
+                    <div className="h-[45vh]">
+                        <JobCard
+                            expanded={false}
+                            imageURL={card.imageURL}
+                            companyLogo={card.companyLogo}
+                            companyName={card.companyName}
+                            jobTitle={card.jobTitle}
+                            jobType={card.jobType}
+                            jobSummary={card.jobSummary}
+                            linkToCompany={card.linkToCompany}
+                            jobDescriptionList={card.jobDescriptionList}
+                            frameworkList={card.frameworkList}
+                            card={card}
+                        />
+                    </div>
                 </motion.div>
             ))}
             {/* To fix screen on phones */}
@@ -40,14 +46,14 @@ export default function Internship({ isInView }) {
                 {card && (
                     <motion.div
                         layoutId={card.id}
-                        className="fixed inset-0 top-60 sm:top-0 flex items-center justify-center"
+                        className="overlay fixed inset-0 flex items-center justify-center"
                         onClick={() => setCard(null)}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
 
-                        <div className="scale-y-[0.8] sm:scale-100 origin-top">
+                        <div className="scale-90 sm:h-full sm:w-full sm:scale-100 sm:py-20">
 
                             <JobCard
                                 expanded={true}
