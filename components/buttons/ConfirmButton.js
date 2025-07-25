@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation, useTime } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 export default function ConfirmButton({
     onConfirm,
-    holdDuration = 2000,
+    holdDuration = 1000,
 }) {
     const timeoutRef = useRef(null);
-    const intervalRef = useRef(null);
     const [isHolding, setIsHolding] = useState(false);
     const progressControls = useAnimation();
     const [text, setText] = useState('Hold to go GitHub');
-    const [elipses, setElipses] = useState('');
 
     const startHold = () => {
         setIsHolding(true);
@@ -18,15 +16,6 @@ export default function ConfirmButton({
             width: '100%',
             transition: { duration: holdDuration / 1000, ease: 'linear' },
         });
-        intervalRef.current = setInterval(() => {
-            // Your repeating logic here
-            setElipses((prev) => {
-                if (prev.length < 3) {
-                    return prev + '.';
-                }
-                return '';
-            });
-        }, 200);
 
         timeoutRef.current = setTimeout(() => {
             onConfirm();
@@ -37,9 +26,7 @@ export default function ConfirmButton({
     const cancelHold = () => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
-            clearInterval(intervalRef.current);
         }
-        setElipses('');
         resetHold();
     };
 
@@ -70,12 +57,11 @@ export default function ConfirmButton({
             <motion.button
                 onPointerDown={startHold}
                 onPointerUp={cancelHold}
-                onPointerLeave={cancelHold}
+                onPointerCancel={cancelHold}
                 whileTap={{ scale: 0.98 }}
                 className="relative z-10 w-full h-full text-white bg-gray-800 hover:bg-gray-700 transition-colors duration-200 font-medium rounded-xl flex items-center justify-center"
             >
                 <span >{text}</span>
-                <span style={{ display: "absolute" }}>{elipses}</span>
             </motion.button>
         </div>
     );

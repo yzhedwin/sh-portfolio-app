@@ -10,7 +10,7 @@ const repoGifs = {
     "sh-datrun-app": "/assets/gif/project1.gif",
     "sh-peercode-iac": "/assets/gif/project2.gif",
     "PeerCode": "/assets/gif/project3.gif",
-    "next-portolio-app": "/assets/gif/project4.gif",
+    "sh-portfolio-app": "/assets/gif/project4.gif",
 };
 export default function Projects() {
     const [repos, setRepos] = useState(DUMMY_REPOS);
@@ -29,9 +29,8 @@ export default function Projects() {
         // .then(console.log);
     }, []);
     const handleConfirm = (url) => {
-        console.log("Confirmed URL:", url);
-        alert("Opening repository in a new tab...");
-    }
+        window.open(url, '_blank');
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
@@ -74,7 +73,7 @@ export default function Projects() {
                                 Language: {repo.primaryLanguage?.name || 'N/A'}
                             </div>
                             <div className="px-3 mt-auto text-xs text-gray-400">Last Updated: {new Date(repo.updatedAt).toLocaleDateString()}</div>
-                            <ConfirmButton url={repo.html_url} onConfirm={() => handleConfirm(repo.html_url)} />
+                            <ConfirmButton onConfirm={() => handleConfirm(repo.url)} />
                         </div>
                     </motion.div>
                 ))}
