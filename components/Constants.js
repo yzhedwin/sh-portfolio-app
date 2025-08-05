@@ -89,7 +89,7 @@ export const INTERNSHIP_CARDS = [
         companyName: DSTA_INTERNSHIP_COMPANY,
         jobTitle: DSTA_INTERNSHIP_JOB_TITLE,
         jobType: DSTA_INTERNSHIP_JOB_TYPE,
-        jobSummary: SI_INTERNSHIP_SUMMARY,
+        jobSummary: DSTA_INTERNSHIP_SUMMARY,
         linkToCompany: DSTA_INTERNSHIP_COMPANY_URL,
         jobDescriptionList:
             [

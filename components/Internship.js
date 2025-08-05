@@ -24,7 +24,7 @@ export default function Internship({ isInView }) {
                     className="card bg-red p-6 rounded-2xl shadow-2xl transform-style-preserve-3d"
                     onClick={() => setCard(card)}
                 >
-                    <div className="h-[45vh]">
+                    <div className="h-[70vh] md:h-[55vh]">
                         <JobCard
                             expanded={false}
                             imageURL={card.imageURL}
@@ -53,8 +53,7 @@ export default function Internship({ isInView }) {
                         exit={{ opacity: 0 }}
                     >
 
-                        <div className="scale-90 sm:h-full sm:w-full sm:scale-100 sm:py-20">
-
+                        <div className="scale-90 h-full w-full sm:scale-100 sm:py-20">
                             <JobCard
                                 expanded={true}
                                 imageURL={card.imageURL}

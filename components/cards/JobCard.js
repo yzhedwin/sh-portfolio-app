@@ -8,19 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 export default function JobCard(props) {
-  const { companyLogo, imageURL, linkToCompany, companyName, jobTitle, jobType, jobSummary, jobDescriptionList, frameworkList } = props;
+  const {expanded, companyLogo, imageURL, linkToCompany, companyName, jobTitle, jobType, jobSummary, jobDescriptionList, frameworkList } = props;
 
   return (
-    <div className="h-full w-full bg-blue p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
-      <Card
-        sx={{
-          overflow: "hidden",
-          height: "100%",
-          boxShadow: 3,
-          textAlign: "left",
-          padding: 1,
-        }}
-      >
+      <Card sx={expanded ? {overflowY:"scroll"} : {overflowY: "hidden"}} className="h-full w-full text-left p-6 rounded-2xl shadow-2xl transform-style-preserve-3d">
         <CardHeader
           avatar={<Avatar alt="logo" src={companyLogo} ></Avatar>}
           action={
@@ -40,9 +31,9 @@ export default function JobCard(props) {
           subheader={jobTitle}
           sx={{ height: "13vh", textAlign: "left", fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
         />
-        <CardMedia component="img" image={imageURL} alt={jobType}
+        <CardMedia component="img" image={imageURL} alt={jobType} className="mt-5"
           sx={{ height: { sm: "40%", md: "40%", lg: "40%" }, objectFit: "scale-down" }} />
-        <CardContent>
+        <CardContent className="mt-5">
           <Typography variant="body2" color="text.secondary">
             {jobSummary ? jobSummary : "No summary available."}
           </Typography>
@@ -72,6 +63,6 @@ export default function JobCard(props) {
             <Typography paragraph>{frameworkList ?? "N/A"}</Typography>
           </CardContent>}
       </Card>
-    </div>
+    // </div>
   );
 }
